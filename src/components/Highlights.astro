@@ -1,0 +1,195 @@
+---
+// Sample highlights data - replace with your actual images
+const highlights = [
+  { image: "/images/highlight1.jpg", caption: "MacBook LED side-channel exfil attack — June 2025" },
+  { image: "/images/highlight2.jpg", caption: "IOT Exploitation Workshop" },
+  { image: "/images/highlight3.jpg", caption: "Reverse Engineering Masterclass — May 2025" },
+  { image: "/images/highlight4.jpg", caption: "Zero-Day Research Presentation — April 2025" },
+  { image: "/images/highlight5.jpg", caption: "Red Team Operations Workshop — March 2025" },
+  { image: "/images/highlight6.jpg", caption: "Cloud Security Deep Dive — February 2025" },
+  // Add more highlights as needed
+];
+---
+
+<section class="highlights section">
+  <div class="container">
+    <h2 class="section-title">Past Highlights</h2>
+    <p class="section-subtitle">Showcasing real-world cybersecurity insights from our community.</p>
+  </div>
+  
+  <div class="carousel-wrapper">
+    <div class="carousel-container" id="carousel">
+      <div class="carousel-track">
+        {highlights.map((highlight) => (
+          <div class="highlight-card">
+            <div class="highlight-image">
+              <img src={highlight.image} alt={highlight.caption} loading="lazy" />
+            </div>
+            <p class="highlight-caption">{highlight.caption}</p>
+          </div>
+        ))}
+        <!-- Duplicate for infinite scroll effect -->
+        {highlights.map((highlight) => (
+          <div class="highlight-card">
+            <div class="highlight-image">
+              <img src={highlight.image} alt={highlight.caption} loading="lazy" />
+            </div>
+            <p class="highlight-caption">{highlight.caption}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .highlights {
+    background-color: var(--bg-primary);
+    overflow: hidden;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .section-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+
+  .carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+
+  .carousel-container {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .carousel-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+    animation: scroll 40s linear infinite;
+  }
+
+  .carousel-track:hover {
+    animation-play-state: paused;
+  }
+
+  .highlight-card {
+    flex: 0 0 auto;
+    width: 400px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .highlight-card:hover {
+    transform: scale(1.05);
+  }
+
+  .highlight-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    position: relative;
+  }
+
+  .highlight-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .highlight-card:hover .highlight-image img {
+    transform: scale(1.1);
+  }
+
+  .highlight-caption {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .highlight-card {
+      width: 300px;
+    }
+
+    .highlight-image {
+      height: 200px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .highlight-card {
+      width: 250px;
+    }
+
+    .highlight-image {
+      height: 150px;
+    }
+  }
+</style>
+
+<script>
+  // Optional: Add manual scroll controls
+  const carousel = document.getElementById('carousel');
+  
+  if (carousel) {
+    let isDown = false;
+    let startX: number;
+    let scrollLeft: number;
+
+    carousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      carousel.style.cursor = 'grabbing';
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+      isDown = false;
+      carousel.style.cursor = 'grab';
+    });
+
+    carousel.addEventListener('mouseup', () => {
+      isDown = false;
+      carousel.style.cursor = 'grab';
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 2;
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+  }
+</script>

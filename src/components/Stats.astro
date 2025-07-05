@@ -1,0 +1,76 @@
+---
+const stats = [
+  { number: "30+", label: "Meetups Held" },
+  { number: "20+", label: "Speakers Hosted" },
+  { number: "1500+", label: "Attendees" }
+];
+---
+
+<section class="stats section">
+  <div class="container">
+    <h2 class="section-title">BreachForce by the Numbers</h2>
+    <div class="stats-grid">
+      {stats.map((stat) => (
+        <div class="stat-card">
+          <div class="stat-number">{stat.number}</div>
+          <div class="stat-label">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats {
+    background-color: #ff1493; /* Change background to black */
+    text-align: center;
+    padding: 5rem 1rem; /* Add padding */
+    color: #fff; /* Set default text color to white */
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 4rem;
+    font-weight: 600;
+  }
+
+  .stats-grid {
+    display: grid;
+    /* Updated to show 3 columns on desktop */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1rem; /* Reduced gap */
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .stat-card {
+    padding: 2rem 1rem;
+  }
+
+  .stat-number {
+    font-size: clamp(3rem, 7vw, 4.5rem); /* Make numbers slightly larger */
+    font-weight: 700;
+    color: #fff; /* Ensure number is white */
+    margin-bottom: 0.75rem;
+    font-family: var(--font-mono);
+  }
+
+  .stat-label {
+    font-size: 1rem; /* Slightly smaller label */
+    color: #ccc; /* Lighter gray for the label */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      /* Stack stats on mobile */
+      grid-template-columns: 1fr; 
+      gap: 2rem;
+    }
+
+    .stat-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
