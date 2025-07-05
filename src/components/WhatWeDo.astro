@@ -1,0 +1,94 @@
+---
+const features = [
+  {
+    icon: "@",
+    title: "Monthly Meetups",
+    description: "Engaging sessions every month covering the latest in cybersecurity."
+  },
+  {
+    icon: "🌐",
+    title: "Real-World Content",
+    description: "Focus on practical hacks, tools, and cutting-edge research."
+  },
+  {
+    icon: "≠",
+    title: "No Vendor Fluff",
+    description: "Unbiased discussions, free from sales pitches and gatekeeping."
+  },
+  {
+    icon: "🛡️",
+    title: "Community-Driven",
+    description: "A non-profit, community-run initiative for everyone."
+  }
+];
+---
+
+<section class="what-we-do section">
+  <div class="container">
+    <h2 class="section-title">What We Do</h2>
+    <div class="features-grid">
+      {features.map((feature) => (
+        <div class="feature-card">
+          <div class="feature-icon">{feature.icon}</div>
+          <h3 class="feature-title">{feature.title}</h3>
+          <p class="feature-description">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .what-we-do {
+    background-color: var(--bg-primary);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 4rem;
+    font-weight: 600;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .feature-card {
+    text-align: left;
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+    display: inline-block;
+  }
+
+  .feature-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .feature-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    .feature-card {
+      text-align: center;
+    }
+  }
+</style>

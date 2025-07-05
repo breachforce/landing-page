@@ -1,0 +1,95 @@
+---
+const contributions = [
+  {
+    title: "Want to Speak?",
+    description: "Share your expertise and research with the community. Submit your talk proposal via our",
+    linkText: "CFP portal",
+    link: "https://breachforce.net/cfp"
+  },
+  {
+    title: "Want to Write?",
+    description: "Contribute articles, research summaries, or tool reviews.",
+    linkText: "Write with Us",
+    link: "https://breachforce.net/write"
+  },
+  {
+    title: "Want to Sponsor?",
+    description: "Support our community and gain visibility. Contact us at",
+    linkText: "sales@breachforce.net",
+    link: "mailto:sales@breachforce.net"
+  }
+];
+---
+
+<section class="contribute section">
+  <div class="container">
+    <h2 class="section-title">Contribute to BreachForce</h2>
+    <div class="contribute-grid">
+      {contributions.map((item) => (
+        <div class="contribute-card">
+          <h3 class="contribute-title">{item.title}</h3>
+          <p class="contribute-description">
+            {item.description} <a href={item.link} class="contribute-link">{item.linkText}</a>.
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .contribute {
+    background-color: var(--bg-primary);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 4rem;
+    font-weight: 600;
+  }
+
+  .contribute-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .contribute-card {
+    text-align: left;
+  }
+
+  .contribute-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .contribute-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  .contribute-link {
+    color: var(--accent-pink);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+
+  .contribute-link:hover {
+    color: #ff69b4;
+  }
+
+  @media (max-width: 768px) {
+    .contribute-grid {
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    .contribute-title {
+      font-size: 1.5rem;
+    }
+  }
+</style>
