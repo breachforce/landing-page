@@ -10,7 +10,7 @@ const contributions = [
     title: "Want to Write?",
     description: "Contribute articles, research summaries, or tool reviews.",
     linkText: "Write with Us",
-    link: "https://breachforce.net/write"
+    link: "https://breachforce.net/write-with-us"
   },
   {
     title: "Want to Sponsor?",
@@ -29,7 +29,7 @@ const contributions = [
         <div class="contribute-card">
           <h3 class="contribute-title">{item.title}</h3>
           <p class="contribute-description">
-            {item.description} <a href={item.link} class="contribute-link">{item.linkText}</a>.
+            {item.description} <a href={item.link} class="contribute-link" target="_blank" rel="noopener noreferrer">{item.linkText}</a>.
           </p>
         </div>
       ))}
@@ -39,13 +39,23 @@ const contributions = [
 
 <style>
   .contribute {
-    background-color: var(--bg-primary);
+    background-color: #201e25;
+  }
+
+  .contribute .container {
+    background-color: #0f0f10;
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    /* border-radius: 12px; */
+    padding: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
   }
 
   .section-title {
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 4rem;
-    font-weight: 600;
+    font-weight: 400;
+    font-family: 'Fira Mono', monospace;
   }
 
   .contribute-grid {
@@ -63,13 +73,15 @@ const contributions = [
   .contribute-title {
     font-size: 1.75rem;
     margin-bottom: 1rem;
-    font-weight: 600;
+    font-weight: 400;
+    font-family: 'Fira Sans', sans-serif;
   }
 
   .contribute-description {
     color: var(--text-secondary);
     line-height: 1.6;
     font-size: 1rem;
+    font-family: 'Fira Sans', sans-serif;
   }
 
   .contribute-link {
