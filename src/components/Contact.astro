@@ -3,36 +3,54 @@
 
 <footer class="contact section">
   <div class="container">
-    <h2 class="section-title">Contact Us</h2>
-    <p class="contact-text">Connect with the BreachForce team for any inquiries.</p>
-    <p class="contact-email">
-      Email: <a href="mailto:hello@breachforce.net">hello@breachforce.net</a>
-    </p>
-    <p class="copyright">Copyright ©2025 BreachForce</p>
+    <div class="contact-box">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="contact-text">Connect with the BreachForce team for any inquiries.</p>
+      <p class="contact-email">
+        Email: <a href="mailto:hello@breachforce.net">hello@breachforce.net</a>
+      </p>
+      <p class="copyright">Copyright ©2025 BreachForce</p>
+    </div>
   </div>
 </footer>
 
 <style>
   .contact {
-    background-color: var(--bg-primary);
+    background-color: #201e25;
     padding-bottom: 3rem;
+  }
+
+  .contact-box {
+    background-color: #0f0f10;
+    /* border: 2px solid #333; */
+    /* border-radius: 8px; */
+    padding: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .section-title {
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
+    font-family: "Fira Mono";
+    color: #FBF3FA;
   }
 
   .contact-text {
-    color: var(--text-secondary);
+    color: #EOD6DE;
     margin-bottom: 1.5rem;
-    font-size: 1.1rem;
+    font-size: 1em;
+    font-weight: 400;
+    font-family: "Fira Sans";
   }
 
   .contact-email {
-    font-size: 1.1rem;
-    margin-bottom: 3rem;
+    color: #EOD6DE;
+    margin-bottom: 1.5rem;
+    font-size: 1em;
+    font-weight: 400;
+    font-family: "Fira Sans";
   }
 
   .contact-email a {
@@ -46,12 +64,18 @@
   }
 
   .copyright {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-top: 2rem;
+    color: #EOD6DE;
+    font-size: 1em;
+    font-weight: 400;
+    font-family: "Fira Sans";
   }
 
   @media (max-width: 768px) {
+    .contact-box {
+      padding: 2rem;
+      margin: 0 1rem;
+    }
+    
     .contact {
       text-align: center;
     }

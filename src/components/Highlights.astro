@@ -1,195 +1,134 @@
 ---
-// Sample highlights data - replace with your actual images
-const highlights = [
-  { image: "/images/highlight1.jpg", caption: "MacBook LED side-channel exfil attack — June 2025" },
-  { image: "/images/highlight2.jpg", caption: "IOT Exploitation Workshop" },
-  { image: "/images/highlight3.jpg", caption: "Reverse Engineering Masterclass — May 2025" },
-  { image: "/images/highlight4.jpg", caption: "Zero-Day Research Presentation — April 2025" },
-  { image: "/images/highlight5.jpg", caption: "Red Team Operations Workshop — March 2025" },
-  { image: "/images/highlight6.jpg", caption: "Cloud Security Deep Dive — February 2025" },
-  // Add more highlights as needed
-];
+// Import the highlight data directly from your local JSON file.
+// Astro handles the import and parsing automatically.
+import highlights from '../data/highlights.json';
+
+// Define the structure for a single highlight for TypeScript safety
+interface Highlight {
+  caption: string;
+  postUrl: string;
+  thumbnailUrl: string;
+  imageUrls: string[];
+}
 ---
 
-<section class="highlights section">
+<section class="highlights">
   <div class="container">
     <h2 class="section-title">Past Highlights</h2>
     <p class="section-subtitle">Showcasing real-world cybersecurity insights from our community.</p>
   </div>
   
   <div class="carousel-wrapper">
-    <div class="carousel-container" id="carousel">
-      <div class="carousel-track">
-        {highlights.map((highlight) => (
-          <div class="highlight-card">
-            <div class="highlight-image">
-              <img src={highlight.image} alt={highlight.caption} loading="lazy" />
-            </div>
-            <p class="highlight-caption">{highlight.caption}</p>
+    <div class="carousel-track">
+      <!-- We map over the highlights twice for the infinite scroll effect -->
+      {[...highlights, ...highlights].map((highlight: Highlight, index) => (
+        <div 
+          class="highlight-card" 
+          data-post-url={highlight.postUrl}
+          data-images={JSON.stringify(highlight.imageUrls)}
+          data-caption={highlight.caption}
+        >
+          <div class="highlight-image">
+            <img src={highlight.thumbnailUrl} alt={highlight.caption} loading="lazy" />
           </div>
-        ))}
-        <!-- Duplicate for infinite scroll effect -->
-        {highlights.map((highlight) => (
-          <div class="highlight-card">
-            <div class="highlight-image">
-              <img src={highlight.image} alt={highlight.caption} loading="lazy" />
-            </div>
-            <p class="highlight-caption">{highlight.caption}</p>
-          </div>
-        ))}
-      </div>
+          <p class="highlight-caption">{highlight.caption}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
+<!-- This is the popup modal that will show the images -->
+<div id="highlight-modal" class="modal-overlay" style="display: none;">
+  <div class="modal-content">
+    <button id="modal-close" class="modal-close-button">&times;</button>
+    <h3 id="modal-caption"></h3>
+    <div id="modal-images"></div>
+    <a id="modal-linkedin-link" href="#" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+      View on LinkedIn ↗
+    </a>
+  </div>
+</div>
+
 <style>
-  .highlights {
-    background-color: var(--bg-primary);
-    overflow: hidden;
-  }
+/* --- Component styles --- */
+.highlights { background-color: #0f0f10; overflow: hidden; padding: 5rem 0; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+.section-title { font-family: 'Fira Mono', monospace; font-size: 2rem; font-weight: 500; color: #fbf3fa; margin-bottom: 0.5rem; }
+.section-subtitle { font-family: 'Fira Sans', sans-serif; color: #e0d6de; margin-bottom: 3rem; font-size: 1.1rem; }
+.carousel-wrapper { position: relative; width: 100%; }
+.carousel-track { display: flex; gap: 1.5rem; padding: 0 1.5rem; animation: scroll 60s linear infinite; }
+.carousel-track:hover { animation-play-state: paused; }
+.highlight-card { flex: 0 0 auto; width: 400px; cursor: pointer; transition: transform 0.3s ease; }
+.highlight-card:hover { transform: translateY(-5px); }
+.highlight-image { width: 100%; height: 250px; overflow: hidden; border-radius: 8px; background: #201e25; }
+.highlight-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+.highlight-card:hover .highlight-image img { transform: scale(1.05); }
+.highlight-caption { margin-top: 1rem; font-family: 'Fira Sans', sans-serif; font-size: 0.9rem; color: #e0d6de; line-height: 1.4; }
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
-  .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
+/* --- Modal styles --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: none; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(5px); }
+.modal-content { background-color: #201e25; padding: 2rem; border-radius: 8px; max-width: 90vw; max-height: 90vh; overflow-y: auto; position: relative; color: #fbf3fa; width: 800px; }
+.modal-close-button { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; }
+#modal-caption { font-family: 'Fira Mono', monospace; font-size: 1.5rem; margin-bottom: 1.5rem; }
+#modal-images { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+#modal-images img { width: 100%; border-radius: 4px; }
+.linkedin-link { display: inline-block; margin-top: 1.5rem; color: #ff6bd8; font-family: 'Fira Sans', sans-serif; text-decoration: none; font-weight: 600; }
+.linkedin-link:hover { text-decoration: underline; }
 
-  .section-subtitle {
-    color: var(--text-secondary);
-    margin-bottom: 3rem;
-    font-size: 1.1rem;
-  }
-
-  .carousel-wrapper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    margin-top: 2rem;
-  }
-
-  .carousel-container {
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .carousel-container::-webkit-scrollbar {
-    display: none;
-  }
-
-  .carousel-track {
-    display: flex;
-    gap: 1.5rem;
-    padding: 0 1.5rem;
-    animation: scroll 40s linear infinite;
-  }
-
-  .carousel-track:hover {
-    animation-play-state: paused;
-  }
-
-  .highlight-card {
-    flex: 0 0 auto;
-    width: 400px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-
-  .highlight-card:hover {
-    transform: scale(1.05);
-  }
-
-  .highlight-image {
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-    border-radius: 8px;
-    background: var(--bg-secondary);
-    position: relative;
-  }
-
-  .highlight-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  .highlight-card:hover .highlight-image img {
-    transform: scale(1.1);
-  }
-
-  .highlight-caption {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.4;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .highlight-card {
-      width: 300px;
-    }
-
-    .highlight-image {
-      height: 200px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .highlight-card {
-      width: 250px;
-    }
-
-    .highlight-image {
-      height: 150px;
-    }
-  }
+/* --- Responsive styles --- */
+@media (max-width: 768px) {
+  .highlight-card { width: 300px; }
+  .modal-content { width: 90vw; }
+}
 </style>
 
 <script>
-  // Optional: Add manual scroll controls
-  const carousel = document.getElementById('carousel');
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('highlight-modal') as HTMLElement;
+  const modalCloseBtn = document.getElementById('modal-close') as HTMLElement;
+  const modalCaption = document.getElementById('modal-caption') as HTMLElement;
+  const modalImagesContainer = document.getElementById('modal-images') as HTMLElement;
+  const modalLink = document.getElementById('modal-linkedin-link') as HTMLAnchorElement;
+  const highlightCards = document.querySelectorAll('.highlight-card');
+
+  highlightCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const cardElement = card as HTMLElement;
+      const images = JSON.parse(cardElement.dataset.images || '[]');
+      const caption = cardElement.dataset.caption || '';
+      const postUrl = cardElement.dataset.postUrl || '#';
+
+      modalCaption.textContent = caption;
+      modalLink.href = postUrl;
+      modalImagesContainer.innerHTML = '';
+
+      images.forEach((src: string) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = caption;
+        img.loading = 'lazy';
+        modalImagesContainer.appendChild(img);
+      });
+
+      modal.style.display = 'flex';
+    });
+  });
+
+  const closeModal = () => {
+    modal.style.display = 'none';
+  };
+
+  modalCloseBtn.addEventListener('click', closeModal);
   
-  if (carousel) {
-    let isDown = false;
-    let startX: number;
-    let scrollLeft: number;
-
-    carousel.addEventListener('mousedown', (e) => {
-      isDown = true;
-      carousel.style.cursor = 'grabbing';
-      startX = e.pageX - carousel.offsetLeft;
-      scrollLeft = carousel.scrollLeft;
-    });
-
-    carousel.addEventListener('mouseleave', () => {
-      isDown = false;
-      carousel.style.cursor = 'grab';
-    });
-
-    carousel.addEventListener('mouseup', () => {
-      isDown = false;
-      carousel.style.cursor = 'grab';
-    });
-
-    carousel.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - carousel.offsetLeft;
-      const walk = (x - startX) * 2;
-      carousel.scrollLeft = scrollLeft - walk;
-    });
-  }
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+});
 </script>

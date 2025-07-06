@@ -3,12 +3,12 @@ const resources = [
   {
     title: "Blog",
     description: "Read insightful articles and technical deep-dives from our community.",
-    link: "https://breachforce.net/blog"
+    link: "https://breachforce.net/"
   },
   {
     title: "Archives",
     description: "Access past meetup talks, slides, and resources.",
-    link: "https://breachforce.net/archives"
+    link: "https://breachforce.net/deck"
   }
 ];
 ---
@@ -18,7 +18,7 @@ const resources = [
     <h2 class="section-title">Resources & Navigation</h2>
     <div class="resources-grid">
       {resources.map((resource) => (
-        <a href={resource.link} class="resource-card">
+        <a href={resource.link} class="resource-card" target="_blank" rel="noopener noreferrer">
           <h3 class="resource-title">{resource.title}</h3>
           <p class="resource-description">{resource.description}</p>
         </a>
@@ -33,23 +33,24 @@ const resources = [
   }
 
   .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 3rem;
-    font-weight: 600;
+    font-size: 3em;
+    margin-bottom: 4rem;
+    font-weight: 300;
+    font-family: 'Fira Mono';
   }
 
   .resources-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    max-width: 800px;
+    max-width: 1100px;
     margin: 0 auto;
   }
 
   .resource-card {
     background-color: var(--bg-card);
-    padding: 2.5rem;
-    border-radius: 8px;
+    padding: 1.5rem 1.5rem; /* Decreased padding */
+    /* border-radius: 8px; */
     transition: all 0.3s ease;
     display: block;
   }
@@ -63,7 +64,8 @@ const resources = [
   .resource-title {
     font-size: 1.75rem;
     margin-bottom: 1rem;
-    font-weight: 600;
+    font-weight: 500;
+    font-family: 'Fira Mono';
     color: var(--text-primary);
   }
 
@@ -71,6 +73,8 @@ const resources = [
     color: var(--text-secondary);
     line-height: 1.6;
     font-size: 1rem;
+    font-family: 'Fira Sans';
+    font-weight: 400;
   }
 
   @media (max-width: 768px) {

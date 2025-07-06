@@ -24,6 +24,31 @@ const { title } = Astro.props;
   </head>
   <body>
     <slot />
+    
+    <script>
+      // Scroll animation script
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections when DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+          section.classList.add('fade-in-section');
+          observer.observe(section);
+        });
+      });
+    </script>
   </body>
 </html>
 
@@ -108,5 +133,58 @@ const { title } = Astro.props;
 
   ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-purple);
+  }
+
+  /* Scroll Animation Styles */
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in-section.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered animation for child elements */
+  .fade-in-section .container > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-in-section.animate-in .container > *:nth-child(1) {
+    animation: slideUpFade 0.6s ease-out 0.1s forwards;
+  }
+
+  .fade-in-section.animate-in .container > *:nth-child(2) {
+    animation: slideUpFade 0.6s ease-out 0.2s forwards;
+  }
+
+  .fade-in-section.animate-in .container > *:nth-child(3) {
+    animation: slideUpFade 0.6s ease-out 0.3s forwards;
+  }
+
+  .fade-in-section.animate-in .container > *:nth-child(4) {
+    animation: slideUpFade 0.6s ease-out 0.4s forwards;
+  }
+
+  @keyframes slideUpFade {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Hero section should be visible immediately */
+  .hero.fade-in-section {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero.fade-in-section .container > * {
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>
