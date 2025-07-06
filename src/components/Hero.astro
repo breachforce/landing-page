@@ -57,6 +57,24 @@
     background-size: cover;
     background-position: center;
     border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .image-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/skyline.png');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+  }
+
+  .image-content:hover::before {
+    transform: scale(1.05);
   }
 
   /* The overlay is removed, as it's part of the image itself.
