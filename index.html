@@ -1,0 +1,605 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>BreachForce - Mumbai's Underground Cybersecurity Meetups</title>
+    <!-- Base URL tag to help with relative paths -->
+    <base href="./">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
+</head>
+
+<body class="bg-white text-gray-900">
+    <!-- Fixed Floating Navbar -->
+    <div id="navbar" class="fixed top-0 left-0 right-0 z-50">
+        <!-- Navbar will be loaded here dynamically -->
+    </div>
+
+    <!-- Welcome to BreachForce (Previously: Hero Section) -->
+    <section class="relative min-h-screen mt-8 pt-12 pb-8 px-4 flex items-center justify-center overflow-hidden bg-white">
+        <div class="bg-gradient-to-br max-w-7xl mx-auto from-gray-50 to-gray-100 border border-gray-200 rounded-2xl shadow-sm my-4 sm:my-8 min-h-[80vh] flex items-center justify-center">
+            <div class="relative z-10 max-w-7xl mx-auto w-full text-center px-4 sm:px-6 lg:px-8 xl:px-10 py-8 sm:py-12 lg:py-16">
+                <h1
+                    class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 sm:mb-8 text-center px-2">
+                    <span class="text-black block">
+                        BreachForce – Mumbai's Underground Cybersecurity Meetups
+                    </span>
+                </h1>
+                <p
+                    class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto mb-8 sm:mb-12 leading-relaxed text-center px-4">
+                    A free, grassroots community of hackers, red teamers, defenders, and curious minds.
+                </p>
+
+                <!-- Stats Section -->
+                <div class="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 mb-8 sm:mb-12">
+                    <div class="text-center">
+                        <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-red-600 mb-1 sm:mb-2">20+</p>
+                        <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700">Meetups Held</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-red-600 mb-1 sm:mb-2">20+</p>
+                        <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700">Speakers Hosted</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-red-600 mb-1 sm:mb-2">1500+
+                        </p>
+                        <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700">Attendees</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="#"
+                        class="btn-primary bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-md shadow-lg transform transition-transform hover:scale-105">
+                        Join Upcoming Meetup
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why BreachForce? (Previously: What We Do) -->
+    <section id="why-breachforce" class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Why BreachForce?</h2>
+            <div class="grid grid-cols-6 grid-rows-6 gap-4 h-96 md:h-[500px] lg:h-[600px]">
+                <!-- Card 1 - Large Left -->
+                <div
+                    class="col-span-3 row-span-4 bg-gradient-to-br from-red-50 to-red-100 p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col justify-center">
+                    <div class="mb-4">
+                        <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold mb-3 text-gray-900">Monthly Meetups</h3>
+                        <p class="text-gray-600 text-sm lg:text-base">Engaging sessions every month on the latest
+                            cybersecurity topics. Join our community of passionate security professionals and
+                            enthusiasts.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 - Large Right Bottom -->
+                <div
+                    class="col-span-3 row-span-4 col-start-4 row-start-3 bg-gradient-to-br from-blue-50 to-blue-100 p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col justify-center">
+                    <div class="mb-4">
+                        <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold mb-3 text-gray-900">Real-World Content</h3>
+                        <p class="text-gray-600 text-sm lg:text-base">Focus on practical hacks, tools, and research that
+                            you can apply immediately. No theoretical fluff, just actionable security knowledge.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 - Small Right Top -->
+                <div
+                    class="col-span-3 row-span-2 col-start-4 row-start-1 bg-white p-4 lg:p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col justify-center">
+                    <div class="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center mb-3">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L12 21l-6.364-6.364M12 21l6.364-6.364M12 21V9m0 12l-6.364-6.364L12 9l6.364 6.364L12 21z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg lg:text-xl font-bold mb-2 text-gray-900">No Vendor Fluff</h3>
+                    <p class="text-gray-600 text-sm">No sales pitches; purely technical discussions.</p>
+                </div>
+
+                <!-- Card 4 - Small Left Bottom -->
+                <div
+                    class="col-span-3 row-span-2 row-start-5 bg-white p-4 lg:p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col justify-center">
+                    <div class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center mb-3">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg lg:text-xl font-bold mb-2 text-gray-900">Community-Driven</h3>
+                    <p class="text-gray-600 text-sm">Non-profit, community-run initiative.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Meetups & Highlights (Previously: Past Highlights) -->
+    <section id="past-meetups" class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Past Meetups & Highlights</h2>
+            <!-- Bento Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+                <!-- Large Featured Card -->
+                <div
+                    class="md:col-span-2 lg:col-span-2 lg:row-span-2 bg-gradient-to-br from-red-50 to-red-100 p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <p class="text-red-600 font-medium mb-2">June 2025 • Featured</p>
+                    <h3 class="text-2xl lg:text-3xl font-bold mb-4 text-gray-900">MacBook LED side-channel exfil attack
+                    </h3>
+                    <p class="text-gray-600 mb-4">A groundbreaking presentation on extracting data through MacBook LED
+                        indicators using innovative side-channel techniques.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-medium">Hardware
+                            Security</span>
+                    </div>
+                </div>
+
+                <!-- Medium Card -->
+                <div
+                    class="lg:col-span-2 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100">
+                    <p class="text-gray-500 mb-2">May 2025</p>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">Silent Cloud Raids, Reverse Execution & Azure
+                        Attacks</h3>
+                    <p class="text-gray-600 text-sm">Advanced cloud penetration techniques and Azure-specific attack
+                        vectors.</p>
+                    <div class="flex items-center mt-4 text-sm text-gray-500">
+                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium">Cloud
+                            Security</span>
+                    </div>
+                </div>
+
+                <!-- Small Card -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100">
+                    <p class="text-gray-500 mb-2">November 2024</p>
+                    <h3 class="text-lg font-bold mb-3 text-gray-900">SDR & IoT Hacking</h3>
+                    <div class="flex items-center mt-4 text-sm text-gray-500">
+                        <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-medium">IoT</span>
+                    </div>
+                </div>
+
+                <!-- Small Card -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100">
+                    <p class="text-gray-500 mb-2">October 2024</p>
+                    <h3 class="text-lg font-bold mb-3 text-gray-900">Active Directory Workshop</h3>
+                    <div class="flex items-center mt-4 text-sm text-gray-500">
+                        <span
+                            class="bg-purple-100 text-purple-700 px-2 py-1 rounded-full text-xs font-medium">Workshop</span>
+                    </div>
+                </div>
+
+                <!-- Wide Card -->
+                <div
+                    class="md:col-span-2 lg:col-span-4 bg-gradient-to-r from-gray-50 to-gray-100 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex flex-col sm:flex-row items-center justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900">Want to see more?</h3>
+                            <p class="text-gray-600">Check out our complete archive of past meetups and presentations.
+                            </p>
+                        </div>
+                        <div class="mt-4 sm:mt-0">
+                            <a href="#resources"
+                                class="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-200">
+                                View Archives
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved (Previously: Contribute to BreachForce) -->
+    <section id="get-involved" class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Get Involved</h2>
+            <div class="grid grid-cols-6 grid-rows-6 gap-4 h-96 md:h-[500px] lg:h-[600px]">
+                <!-- Card 1 - Large Left Full Height -->
+                <div
+                    class="col-span-3 row-span-6 bg-gradient-to-br from-red-50 to-red-100 p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col justify-center">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl lg:text-3xl font-bold mb-4 text-gray-900">Speak at BreachForce</h3>
+                        <p class="text-gray-600 text-base lg:text-lg mb-6">Share your cybersecurity knowledge with our
+                            community! Submit your talk proposal via our CFP portal and join our roster of expert
+                            speakers.</p>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Technical presentations welcome
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                First-time speakers encouraged
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Lightning talks & workshops
+                            </div>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center px-6 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-colors duration-200">
+                            Submit CFP
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2 - Top Right -->
+                <div
+                    class="col-span-3 row-span-3 col-start-4 bg-white p-6 lg:p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col justify-center">
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl lg:text-2xl font-bold mb-3 text-gray-900">Write for Us</h3>
+                    <p class="text-gray-600 text-sm lg:text-base mb-4">Contribute articles, summaries, or reviews to our
+                        technical blog and help spread cybersecurity knowledge.</p>
+                    <a href="#" class="text-red-600 font-bold hover:underline inline-flex items-center">
+                        Learn More
+                        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Card 3 - Bottom Right -->
+                <div
+                    class="col-span-3 row-span-3 col-start-4 row-start-4 bg-white p-6 lg:p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col justify-center">
+                    <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl lg:text-2xl font-bold mb-3 text-gray-900">Sponsor Us</h3>
+                    <p class="text-gray-600 text-sm lg:text-base mb-4">Support our community initiatives and help us
+                        maintain free, high-quality cybersecurity education.</p>
+                    <div class="space-y-2 mb-4">
+                        <p class="text-sm text-gray-500">Contact: sales@breachforce.net</p>
+                    </div>
+                    <a href="mailto:sales@breachforce.net"
+                        class="text-red-600 font-bold hover:underline inline-flex items-center">
+                        Email Us
+                        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community & Socials (Previously: Join the Conversation) -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Community & Socials</h2>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="#" class="flex flex-col items-center hover:scale-110 transition-transform">
+                    <div class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full mb-3">
+                        <i class="fab fa-linkedin-in text-2xl text-blue-700"></i>
+                    </div>
+                    <p class="font-semibold">LinkedIn</p>
+                    <p class="text-sm text-gray-500">Updates & discussions</p>
+                </a>
+                <a href="#" class="flex flex-col items-center hover:scale-110 transition-transform">
+                    <div class="w-16 h-16 flex items-center justify-center bg-gray-800 rounded-full mb-3">
+                        <i class="fab fa-github text-2xl text-white"></i>
+                    </div>
+                    <p class="font-semibold">GitHub</p>
+                    <p class="text-sm text-gray-500">Open-source contributions</p>
+                </a>
+                <a href="#" class="flex flex-col items-center hover:scale-110 transition-transform">
+                    <div class="w-16 h-16 flex items-center justify-center bg-purple-100 rounded-full mb-3">
+                        <i class="fab fa-instagram text-2xl text-purple-700"></i>
+                    </div>
+                    <p class="font-semibold">Instagram</p>
+                    <p class="text-sm text-gray-500">Community highlights</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources & Archives (Previously: Resources & Navigation) -->
+    <section id="resources" class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Resources & Archives</h2>
+            <div class="grid grid-cols-6 grid-rows-6 gap-4 h-96 md:h-[500px] lg:h-[600px]">
+                <!-- Card 1 - Top Left -->
+                <div
+                    class="col-span-3 row-span-3 bg-gradient-to-br from-blue-50 to-blue-100 p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col justify-center">
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl lg:text-2xl font-bold mb-3 text-gray-900">Blog</h3>
+                    <p class="text-gray-600 text-sm lg:text-base mb-4">Technical articles, security insights, and
+                        in-depth analysis from our community experts and speakers.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 font-bold hover:underline">
+                        Read Articles
+                        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Card 2 - Right Full Height -->
+                <div
+                    class="col-span-3 row-span-6 col-start-4 bg-gradient-to-br from-red-50 to-red-100 p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col justify-center">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl lg:text-3xl font-bold mb-4 text-gray-900">Archives</h3>
+                        <p class="text-gray-600 text-base lg:text-lg mb-6">Access our complete collection of past meetup
+                            recordings, presentation slides, and technical resources from 20+ sessions.</p>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Video recordings available
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Presentation slides & code
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Tools & resources shared
+                            </div>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center px-6 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-colors duration-200">
+                            Browse Archives
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3 - Bottom Left -->
+                <div
+                    class="col-span-3 row-span-3 row-start-4 bg-white p-6 lg:p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col justify-center">
+                    <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl lg:text-2xl font-bold mb-3 text-gray-900">Contact Us</h3>
+                    <p class="text-gray-600 text-sm lg:text-base mb-4">Get in touch with our team for questions,
+                        collaboration opportunities, or general inquiries.</p>
+                    <div class="space-y-2 mb-4">
+                        <p class="text-sm text-gray-500">Email: hello@breachforce.net</p>
+                    </div>
+                    <a href="mailto:hello@breachforce.net"
+                        class="inline-flex items-center text-purple-600 font-bold hover:underline">
+                        Send Email
+                        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-12 sm:py-16 lg:py-24 bg-white flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 w-full">
+            <h3
+                class="text-center text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 lg:mb-16 text-gray-900 text-center mx-auto">
+                Frequently Asked Questions
+            </h3>
+            <div class="max-w-3xl mx-auto space-y-4 sm:space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-lg sm:rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button
+                        class="w-full flex items-center justify-between text-left p-4 sm:p-6 focus:outline-none group">
+                        <span
+                            class="text-base sm:text-lg font-semibold text-gray-800 group-hover:text-red-600 transition-colors pr-4">What
+                            is BreachForce?</span>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 group-hover:text-red-600 transform transition-transform duration-300 flex-shrink-0"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="p-4 sm:p-6 border-t border-gray-200">
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                                BreachForce is Mumbai's underground cybersecurity meetup community. We're a free,
+                                grassroots community of hackers, red teamers, defenders, and curious minds who gather
+                                monthly to share knowledge, discuss the latest security research, and learn from each
+                                other.
+                            </p>
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed mt-3">
+                                Our focus is on practical, hands-on cybersecurity content without vendor pitches or
+                                sales presentations. We believe in community-driven learning and providing a platform
+                                for real-world security discussions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-lg sm:rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button
+                        class="w-full flex items-center justify-between text-left p-4 sm:p-6 focus:outline-none group">
+                        <span
+                            class="text-base sm:text-lg font-semibold text-gray-800 group-hover:text-red-600 transition-colors pr-4">Who
+                            can attend BreachForce meetups?</span>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 group-hover:text-red-600 transform transition-transform duration-300 flex-shrink-0"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="p-4 sm:p-6 border-t border-gray-200">
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                                Our meetups are open to everyone interested in cybersecurity - from complete beginners
+                                to seasoned professionals. Whether you're a student, security researcher, penetration
+                                tester, bug bounty hunter, or just curious about cybersecurity, you're welcome to join
+                                our community.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-lg sm:rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button
+                        class="w-full flex items-center justify-between text-left p-4 sm:p-6 focus:outline-none group">
+                        <span
+                            class="text-base sm:text-lg font-semibold text-gray-800 group-hover:text-red-600 transition-colors pr-4">How
+                            much does it cost to attend?</span>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 group-hover:text-red-600 transform transition-transform duration-300 flex-shrink-0"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="p-4 sm:p-6 border-t border-gray-200">
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                                All BreachForce meetups are completely free to attend! We're a non-profit,
+                                community-driven initiative focused on knowledge sharing and learning. Our goal is to
+                                make cybersecurity education accessible to everyone, regardless of their financial
+                                situation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-lg sm:rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button
+                        class="w-full flex items-center justify-between text-left p-4 sm:p-6 focus:outline-none group">
+                        <span
+                            class="text-base sm:text-lg font-semibold text-gray-800 group-hover:text-red-600 transition-colors pr-4">How
+                            can I speak at a BreachForce meetup?</span>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 group-hover:text-red-600 transform transition-transform duration-300 flex-shrink-0"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="p-4 sm:p-6 border-t border-gray-200">
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                                We're always looking for speakers to share their knowledge and research! You can submit
+                                your talk proposal through our CFP (Call for Papers) portal. We welcome talks on all
+                                cybersecurity topics including penetration testing, vulnerability research, malware
+                                analysis, defensive techniques, and more. Both experienced speakers and first-time
+                                presenters are encouraged to apply.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more FAQ items here if needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- BreachForce Consulting -->
+    <section id="consulting" class="py-16 px-4 bg-white text-gray-900">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-2xl shadow-sm p-8 sm:p-12 lg:p-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900">BreachForce Consulting: Your Cybersecurity Partner</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10 text-center leading-relaxed">
+                    Looking to strengthen your digital defenses? Meet our team of seasoned security professionals with 10+ years of experience. Hire our experts to safeguard your business. By engaging our services, you not only enhance your security but also support our community initiatives.
+                </p>
+                <div class="flex justify-center gap-4">
+                    <a href="#"
+                        class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+                        Get In Touch
+                    </a>
+                    <a href="#"
+                        class="bg-white hover:bg-gray-50 text-red-600 font-bold py-4 px-10 rounded-lg shadow-lg border border-red-600 hover:border-red-700 transform transition-transform hover:scale-105">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="loadComponents.js"></script>
+    <script src="mobileMenu.js"></script>
+    <script src="accordian.js"></script>
+</body>
+
+</html>
