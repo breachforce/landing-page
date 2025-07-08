@@ -10,8 +10,8 @@ class MeetupCarousel {
         
         if (!this.carousel || !this.slides.length) return;
         
-        this.slidesPerView = this.getSlidesPerView();
-        this.maxSlide = Math.max(0, this.slides.length - this.slidesPerView);
+        this.slidesPerView = 1;
+        this.maxSlide = Math.max(0, this.slides.length - 1);
         
         this.init();
         this.setupEventListeners();
@@ -25,10 +25,7 @@ class MeetupCarousel {
     }
     
     getSlidesPerView() {
-        const width = window.innerWidth;
-        if (width >= 1024) return 3; // lg screens
-        if (width >= 768) return 2;  // md screens
-        return 1; // sm screens
+        return 1; // Always show one slide at a time
     }
     
     setupEventListeners() {
@@ -76,14 +73,8 @@ class MeetupCarousel {
     
     setupResizeListener() {
         window.addEventListener('resize', () => {
-            const newSlidesPerView = this.getSlidesPerView();
-            if (newSlidesPerView !== this.slidesPerView) {
-                this.slidesPerView = newSlidesPerView;
-                this.maxSlide = Math.max(0, this.slides.length - this.slidesPerView);
-                this.currentSlide = Math.min(this.currentSlide, this.maxSlide);
-                this.updateCarousel();
-                this.updateButtons();
-            }
+            // Ensure carousel position remains correct on resize
+            this.updateCarousel();
         });
     }
     
@@ -115,7 +106,7 @@ class MeetupCarousel {
     }
     
     updateCarousel() {
-        const translateX = -this.currentSlide * (100 / this.slidesPerView);
+        const translateX = -this.currentSlide * 100;
         this.carousel.style.transform = `translateX(${translateX}%)`;
     }
     
