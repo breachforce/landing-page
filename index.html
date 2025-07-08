@@ -14,6 +14,11 @@
         html {
             scroll-behavior: smooth;
         }
+        
+        /* Add offset for fixed navbar */
+        section {
+            scroll-margin-top: 100px;
+        }
     </style>
 </head>
 
@@ -46,28 +51,12 @@
                 </span>
             </h1>
             
-            <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-4xl mx-auto mb-10 sm:mb-14 leading-relaxed text-center px-4 font-medium">
+            <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-4xl mx-auto mb-12 sm:mb-16 leading-relaxed text-center px-4 font-medium">
                 A free, grassroots community of 
                 <span class="text-red-600 font-semibold">hackers</span>, 
                 <span class="text-red-600 font-semibold">red teamers</span>, 
                 <span class="text-red-600 font-semibold">defenders</span>, and curious minds.
             </p>
-
-            <!-- Stats Section -->
-            <div class="flex flex-wrap justify-center gap-12 sm:gap-16 md:gap-20 lg:gap-24 mb-12 sm:mb-16">
-                <div class="text-center">
-                    <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-red-600/85 mb-2 sm:mb-3">20+</p>
-                    <p class="text-sm sm:text-base md:text-lg text-gray-600">Meetups Held</p>
-                </div>
-                <div class="text-center">
-                    <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-red-600/85 mb-2 sm:mb-3">20+</p>
-                    <p class="text-sm sm:text-base md:text-lg text-gray-600">Expert Speakers</p>
-                </div>
-                <div class="text-center">
-                    <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-red-600/85 mb-2 sm:mb-3">1500+</p>
-                    <p class="text-sm sm:text-base md:text-lg text-gray-600">Community Members</p>
-                </div>
-            </div>
 
             <!-- Enhanced CTA Section -->
             <div class="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 justify-center items-center">
@@ -93,6 +82,38 @@
             </div>
         </div>
     </section>
+
+    <!-- Community Stats Section -->
+    <section id="stats" class="py-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-2xl shadow-sm p-8 sm:p-12 lg:p-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900">Our Community Impact</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10 text-center leading-relaxed">
+                    Building Mumbai's strongest cybersecurity community through knowledge sharing, practical learning, and connecting passionate security professionals.
+                </p>
+                
+                <!-- Stats Grid -->
+                <div class="flex flex-wrap justify-center gap-12 sm:gap-16 md:gap-20 lg:gap-24">
+                    <div class="text-center">
+                        <p class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-red-600 mb-3 sm:mb-4">20+</p>
+                        <p class="text-base sm:text-lg md:text-xl text-gray-700 font-medium">Meetups Held</p>
+                        <p class="text-sm text-gray-500 mt-1">Technical sessions</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-red-600 mb-3 sm:mb-4">20+</p>
+                        <p class="text-base sm:text-lg md:text-xl text-gray-700 font-medium">Expert Speakers</p>
+                        <p class="text-sm text-gray-500 mt-1">Industry professionals</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-red-600 mb-3 sm:mb-4">1500+</p>
+                        <p class="text-base sm:text-lg md:text-xl text-gray-700 font-medium">Community Members</p>
+                        <p class="text-sm text-gray-500 mt-1">Active participants</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Why BreachForce? (Previously: What We Do) -->
     <section id="why-breachforce" class="py-16 px-4 bg-white">
         <div class="max-w-7xl mx-auto">
