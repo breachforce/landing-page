@@ -9,6 +9,12 @@ const resources = [
     title: "Archives",
     description: "Access past meetup talks, slides, and resources.",
     link: "https://breachforce.net/deck"
+  },
+  {
+    title: "Presentation",
+    description: "Learn about BreachForce's mission and community activities.",
+    link: "/presentation",
+    isInternal: true
   }
 ];
 ---
@@ -18,7 +24,12 @@ const resources = [
     <h2 class="section-title">Resources & Navigation</h2>
     <div class="resources-grid">
       {resources.map((resource) => (
-        <a href={resource.link} class="resource-card" target="_blank" rel="noopener noreferrer">
+        <a 
+          href={resource.link} 
+          class="resource-card" 
+          target={resource.isInternal ? "_self" : "_blank"}
+          rel={resource.isInternal ? "" : "noopener noreferrer"}
+        >
           <h3 class="resource-title">{resource.title}</h3>
           <p class="resource-description">{resource.description}</p>
         </a>
