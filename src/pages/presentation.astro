@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="BreachForce Presentation">
+  <main>
+    <section class="presentation-page section">
+      <div class="container">
+        <h1 class="page-title">BreachForce Presentation</h1>
+        <p class="page-subtitle">Learn more about our community mission and activities.</p>
+        
+        <div class="presentation-wrapper">
+          <div class="presentation-embed">
+            <iframe 
+              src="/breachforce-presentation.pdf"
+              width="100%" 
+              height="600"
+              frameborder="0"
+              title="BreachForce Community Presentation PDF"
+            ></iframe>
+          </div>
+          
+          <div class="presentation-actions">
+            <a href="/breachforce-presentation.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              View Full Screen
+            </a>
+            <a href="/" class="btn btn-outline">
+              Back to Home
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .presentation-page {
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+    padding: 2rem 0;
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-family: 'Fira Mono', monospace;
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  .page-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-family: 'Fira Sans', sans-serif;
+    text-align: center;
+  }
+
+  .presentation-wrapper {
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .presentation-embed {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .presentation-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+
+  .btn-primary {
+    background-color: #864af9;
+    color: #ffffff;
+    border-color: #864af9;
+  }
+
+  .btn-primary:hover {
+    background-color: #7c3aed;
+    border-color: #7c3aed;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(134, 74, 249, 0.3);
+  }
+
+  .btn-secondary {
+    border: 1px solid #864af9;
+    background-color: transparent;
+    color: #864af9;
+  }
+
+  .btn-secondary:hover {
+    background-color: #864af9;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(134, 74, 249, 0.3);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--text-secondary);
+    background-color: transparent;
+    color: var(--text-secondary);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--text-secondary);
+    color: var(--bg-primary);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .presentation-wrapper {
+      padding: 1.5rem;
+    }
+
+    .presentation-embed iframe {
+      height: 400px;
+    }
+
+    .presentation-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+  }
+</style>

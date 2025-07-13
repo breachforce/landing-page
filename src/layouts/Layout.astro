@@ -36,17 +36,22 @@ const { title } = Astro.props;
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-in');
+            // Unobserve after animation to prevent re-triggering
+            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
 
       // Observe all sections when DOM is loaded
       document.addEventListener('DOMContentLoaded', () => {
-        const sections = document.querySelectorAll('.section');
-        sections.forEach(section => {
-          section.classList.add('fade-in-section');
-          observer.observe(section);
-        });
+        // Add a small delay to ensure layout is settled
+        setTimeout(() => {
+          const sections = document.querySelectorAll('.section');
+          sections.forEach(section => {
+            section.classList.add('fade-in-section');
+            observer.observe(section);
+          });
+        }, 100);
       });
     </script>
   </body>
@@ -65,7 +70,7 @@ const { title } = Astro.props;
     --bg-card: #252525;
     --text-primary: #ffffff;
     --text-secondary: #a0a0a0;
-    --accent-pink: #ff1493;
+    --accent-pink: #864af9; /* Changed from #ff1493 */
     --accent-purple: #9d4edd;
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', 'Courier New', monospace;
@@ -117,7 +122,7 @@ const { title } = Astro.props;
   }
 
   /* Scrollbar styling */
-  ::-webkit-scrollbar {
+  /* ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
@@ -133,25 +138,26 @@ const { title } = Astro.props;
 
   ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-purple);
-  }
+  } */
 
   /* Scroll Animation Styles */
   .fade-in-section {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(15px); /* Reduced from 30px */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Shorter duration */
   }
 
   .fade-in-section.animate-in {
     opacity: 1;
     transform: translateY(0);
+    will-change: auto; /* Reset after animation */
   }
 
   /* Staggered animation for child elements */
   .fade-in-section .container > * {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(10px); /* Reduced from 20px */
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out; /* Shorter duration */
   }
 
   .fade-in-section.animate-in .container > *:nth-child(1) {
@@ -174,6 +180,7 @@ const { title } = Astro.props;
     to {
       opacity: 1;
       transform: translateY(0);
+      will-change: auto;
     }
   }
 
@@ -181,10 +188,12 @@ const { title } = Astro.props;
   .hero.fade-in-section {
     opacity: 1;
     transform: translateY(0);
+    will-change: auto;
   }
 
   .hero.fade-in-section .container > * {
     opacity: 1;
     transform: translateY(0);
+    will-change: auto;
   }
 </style>
