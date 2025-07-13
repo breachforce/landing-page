@@ -2,6 +2,7 @@
 // Import the highlight data directly from your local JSON file.
 // Astro handles the import and parsing automatically.
 import highlights from '../data/highlights.json';
+import { Image } from 'astro:assets';
 
 // Define the structure for a single highlight for TypeScript safety
 interface Highlight {
@@ -31,7 +32,14 @@ interface Highlight {
           data-caption={highlight.caption}
         >
           <div class="highlight-image">
-            <img src={highlight.thumbnailUrl} alt={highlight.caption} loading="lazy" />
+            <Image 
+              src={highlight.thumbnailUrl} 
+              alt={highlight.caption} 
+              width={400}
+              height={250}
+              loading="lazy"
+              format="webp"
+            />
           </div>
           <p class="highlight-caption">{highlight.caption}</p>
         </div>
