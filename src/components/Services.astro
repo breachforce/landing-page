@@ -1,11 +1,19 @@
 ---
+import { Image } from 'astro:assets';
 ---
 
 <section class="services section">
   <div class="container">
     <div class="services-content">
       <div class="services-image">
-        <img src="/images/services.jpg" alt="BreachForce Consulting" />
+        <Image 
+          src="https://res.cloudinary.com/dzw3rx183/image/upload/v1752433310/services_jfhnpu.jpg" 
+          alt="BreachForce Consulting" 
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+        />
       </div>
       <div class="services-text">
         <h2 class="services-title">BreachForce Consulting: Your Cybersecurity Partner</h2>

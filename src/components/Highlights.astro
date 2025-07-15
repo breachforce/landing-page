@@ -2,6 +2,7 @@
 // Import the highlight data directly from your local JSON file.
 // Astro handles the import and parsing automatically.
 import highlights from '../data/highlights.json';
+import { Image } from 'astro:assets';
 
 // Define the structure for a single highlight for TypeScript safety
 interface Highlight {
@@ -21,21 +22,37 @@ interface Highlight {
   <div class="carousel-wrapper">
     <button class="carousel-nav carousel-prev" id="carousel-prev">‹</button>
     <button class="carousel-nav carousel-next" id="carousel-next">›</button>
-    <div class="carousel-track" id="carousel-track">
-      <!-- We map over the highlights twice for the infinite scroll effect -->
-      {[...highlights, ...highlights].map((highlight: Highlight, index) => (
-        <div 
-          class="highlight-card" 
-          data-post-url={highlight.postUrl}
-          data-images={JSON.stringify(highlight.imageUrls)}
-          data-caption={highlight.caption}
-        >
-          <div class="highlight-image">
-            <img src={highlight.thumbnailUrl} alt={highlight.caption} loading="lazy" />
+    <div class="carousel-container">
+      <div class="carousel-track" id="carousel-track">
+        {highlights.map((highlight: Highlight, index) => (
+          <div 
+            class="highlight-card" 
+            data-post-url={highlight.postUrl}
+            data-images={JSON.stringify(highlight.imageUrls)}
+            data-caption={highlight.caption}
+          >
+            <div class="highlight-image">
+              <Image 
+                src={highlight.thumbnailUrl} 
+                alt={highlight.caption} 
+                width={400}
+                height={250}
+                loading="lazy"
+                format="webp"
+              />
+            </div>
+            <p class="highlight-caption">{highlight.caption}</p>
           </div>
-          <p class="highlight-caption">{highlight.caption}</p>
-        </div>
-      ))}
+        ))}
+      </div>
+    </div>
+    
+    <!-- Progress indicators with counter -->
+    <div class="carousel-indicators" id="carousel-indicators">
+      <!-- Dots will be dynamically generated -->
+    </div>
+    <div class="carousel-counter" id="carousel-counter">
+      <span id="current-slide">1</span> / <span id="total-slides">{highlights.length}</span>
     </div>
   </div>
 </section>
@@ -54,33 +71,111 @@ interface Highlight {
 
 <style>
 /* --- Component styles --- */
-.highlights { background-color: #0f0f10; overflow: hidden; padding: 5rem 0; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-.section-title { font-family: 'Fira Mono', monospace; font-size: 2rem; font-weight: 500; color: #fbf3fa; margin-bottom: 0.5rem; }
-.section-subtitle { font-family: 'Fira Sans', sans-serif; color: #e0d6de; margin-bottom: 3rem; font-size: 1.1rem; }
-.carousel-wrapper { position: relative; width: 100%; overflow: hidden; }
-.carousel-track { display: flex; gap: 1.5rem; padding: 0 1.5rem; transition: transform 0.5s ease; }
-.carousel-track.auto-scroll { animation: scroll 60s linear infinite; }
-.carousel-track:hover { animation-play-state: paused; }
-.highlight-card { flex: 0 0 auto; width: 400px; cursor: pointer; transition: transform 0.3s ease; }
-.highlight-card:hover { transform: translateY(-5px); }
-.highlight-image { width: 100%; height: 250px; overflow: hidden; border-radius: 8px; background: #201e25; }
-.highlight-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
-.highlight-card:hover .highlight-image img { transform: scale(1.05); }
-.highlight-caption { margin-top: 1rem; font-family: 'Fira Sans', sans-serif; font-size: 0.9rem; color: #e0d6de; line-height: 1.4; }
+.highlights { 
+  background-color: #0f0f10; 
+  overflow: hidden; 
+  padding: 5rem 0; 
+}
+
+.container { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 1rem; 
+}
+
+.section-title { 
+  font-family: 'Fira Mono', monospace; 
+  font-size: 2rem; 
+  font-weight: 500; 
+  color: #fbf3fa; 
+  margin-bottom: 0.5rem; 
+}
+
+.section-subtitle { 
+  font-family: 'Fira Sans', sans-serif; 
+  color: #e0d6de; 
+  margin-bottom: 3rem; 
+  font-size: 1.1rem; 
+}
+
+.carousel-wrapper { 
+  position: relative; 
+  width: 100%; 
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carousel-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track { 
+  display: flex; 
+  gap: 1.5rem; 
+  padding: 0 1.5rem;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.highlight-card { 
+  flex: 0 0 auto; 
+  width: 400px; 
+  cursor: pointer; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.highlight-card:hover { 
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(134, 74, 249, 0.2);
+}
+
+.highlight-image { 
+  width: 100%; 
+  height: 250px; 
+  overflow: hidden; 
+  background: #201e25;
+  position: relative;
+}
+
+.highlight-image img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover .highlight-image img { 
+  transform: scale(1.08);
+}
+
+.highlight-caption { 
+  margin: 1rem; 
+  font-family: 'Fira Sans', sans-serif; 
+  font-size: 0.9rem; 
+  color: #e0d6de; 
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 /* Navigation buttons */
 .carousel-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(134, 74, 249, 0.8); /* Changed from rgba(255, 107, 216, 0.8) */
+  background-color: rgba(134, 74, 249, 0.9);
   color: white;
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s ease;
@@ -88,47 +183,187 @@ interface Highlight {
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
 }
 
 .carousel-nav:hover {
-  background-color: rgba(134, 74, 249, 1); /* Changed from rgba(255, 107, 216, 1) */
+  background-color: rgba(134, 74, 249, 1);
   transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(134, 74, 249, 0.4);
+}
+
+.carousel-nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: translateY(-50%) scale(0.9);
 }
 
 .carousel-prev {
-  left: 1rem;
+  left: -20px;
 }
 
 .carousel-next {
-  right: 1rem;
+  right: -20px;
 }
 
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Progress indicators - limited to max 5 dots */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #864af9;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: #864af9;
+  transform: scale(1.2);
+}
+
+.indicator:hover {
+  background: rgba(134, 74, 249, 0.5);
+}
+
+/* Counter display */
+.carousel-counter {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  font-family: 'Fira Mono', monospace;
+  color: #e0d6de;
+  font-size: 0.9rem;
+}
+
+#current-slide {
+  color: #864af9;
+  font-weight: bold;
 }
 
 /* --- Modal styles --- */
-.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: none; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(5px); }
-.modal-content { background-color: #201e25; padding: 2rem; border-radius: 8px; max-width: 90vw; max-height: 90vh; overflow-y: auto; position: relative; color: #fbf3fa; width: 800px; }
-.modal-close-button { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; }
-#modal-caption { font-family: 'Fira Mono', monospace; font-size: 1.5rem; margin-bottom: 1.5rem; }
-#modal-images { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-#modal-images img { width: 100%; border-radius: 4px; }
-.linkedin-link { display: inline-block; margin-top: 1.5rem; color: #864af9; /* Changed from #ff6bd8 */  font-family: 'Fira Sans', sans-serif; text-decoration: none; font-weight: 600; }
-.linkedin-link:hover { text-decoration: underline; }
+.modal-overlay { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.8); 
+  display: none; 
+  align-items: center; 
+  justify-content: center; 
+  z-index: 1000; 
+  backdrop-filter: blur(5px); 
+}
+
+.modal-content { 
+  background-color: #201e25; 
+  padding: 2rem; 
+  border-radius: 8px; 
+  max-width: 90vw; 
+  max-height: 90vh; 
+  overflow-y: auto; 
+  position: relative; 
+  color: #fbf3fa; 
+  width: 800px; 
+}
+
+.modal-close-button { 
+  position: absolute; 
+  top: 1rem; 
+  right: 1rem; 
+  background: none; 
+  border: none; 
+  color: #fff; 
+  font-size: 2rem; 
+  cursor: pointer; 
+}
+
+#modal-caption { 
+  font-family: 'Fira Mono', monospace; 
+  font-size: 1.5rem; 
+  margin-bottom: 1.5rem; 
+}
+
+#modal-images { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 1rem; 
+}
+
+#modal-images img { 
+  width: 100%; 
+  border-radius: 4px; 
+}
+
+.linkedin-link { 
+  display: inline-block; 
+  margin-top: 1.5rem; 
+  color: #864af9; 
+  font-family: 'Fira Sans', sans-serif; 
+  text-decoration: none; 
+  font-weight: 600; 
+}
+
+.linkedin-link:hover { 
+  text-decoration: underline; 
+}
 
 /* --- Responsive styles --- */
 @media (max-width: 768px) {
-  .highlight-card { width: 300px; }
-  .modal-content { width: 90vw; }
+  .highlight-card { 
+    width: 300px; 
+  }
+  
+  .modal-content { 
+    width: 90vw; 
+  }
+  
+  .carousel-nav {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  .carousel-prev { 
+    left: -10px; 
+  }
+  
+  .carousel-next { 
+    right: -10px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .highlight-card { 
+    width: 280px; 
+  }
+  
   .carousel-nav {
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
   }
-  .carousel-prev { left: 0.5rem; }
-  .carousel-next { right: 0.5rem; }
+  
+  .carousel-prev { 
+    left: 0; 
+  }
+  
+  .carousel-next { 
+    right: 0; 
+  }
 }
 </style>
 
@@ -143,65 +378,244 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Carousel navigation
   const carouselTrack = document.getElementById('carousel-track') as HTMLElement;
-  const prevBtn = document.getElementById('carousel-prev') as HTMLElement;
-  const nextBtn = document.getElementById('carousel-next') as HTMLElement;
+  const prevBtn = document.getElementById('carousel-prev') as HTMLButtonElement;
+  const nextBtn = document.getElementById('carousel-next') as HTMLButtonElement;
+  const indicatorsContainer = document.getElementById('carousel-indicators') as HTMLElement;
+  const currentSlideSpan = document.getElementById('current-slide') as HTMLElement;
+  const totalSlidesSpan = document.getElementById('total-slides') as HTMLElement;
   
-  let currentPosition = 0;
+  let currentIndex = 0;
+  const totalCards = highlightCards.length;
   const cardWidth = 400 + 24; // card width + gap
-  const totalCards = highlightCards.length / 2; // Since we duplicate for infinite scroll
-  let isAutoScrolling = true;
+  const visibleCards = Math.floor(window.innerWidth / cardWidth);
+  const maxIndex = Math.max(0, totalCards - visibleCards);
   
-  // Start auto-scroll
-  const startAutoScroll = () => {
-    carouselTrack.classList.add('auto-scroll');
-    isAutoScrolling = true;
+  // Movement settings - move by 2 or 3 cards at a time
+  const getMovementStep = () => {
+    if (window.innerWidth < 768) return 1; // Mobile: move 1 at a time
+    if (window.innerWidth < 1024) return 2; // Tablet: move 2 at a time
+    return 3; // Desktop: move 3 at a time
   };
   
-  // Stop auto-scroll
-  const stopAutoScroll = () => {
-    carouselTrack.classList.remove('auto-scroll');
-    isAutoScrolling = false;
-  };
+  // Indicator settings
+  const MAX_INDICATORS = 5;
+  const showIndicators = totalCards <= MAX_INDICATORS;
   
-  // Manual navigation
-  const moveCarousel = (direction: number) => {
-    stopAutoScroll();
-    currentPosition += direction * cardWidth;
+  // Initialize indicators
+  const initializeIndicators = () => {
+    indicatorsContainer.innerHTML = '';
     
-    // Reset position if we've gone too far
-    if (currentPosition < -cardWidth * totalCards) {
-      currentPosition = 0;
-    } else if (currentPosition > 0) {
-      currentPosition = -cardWidth * totalCards;
+    if (showIndicators) {
+      // Show all indicators if total is 5 or less
+      for (let i = 0; i < totalCards; i++) {
+        const indicator = document.createElement('button');
+        indicator.className = 'indicator';
+        indicator.dataset.index = i.toString();
+        indicator.addEventListener('click', () => goToSlide(i));
+        indicatorsContainer.appendChild(indicator);
+      }
+    } else {
+      // Show sliding window of 5 indicators
+      for (let i = 0; i < MAX_INDICATORS; i++) {
+        const indicator = document.createElement('button');
+        indicator.className = 'indicator';
+        indicator.addEventListener('click', () => {
+          const targetIndex = getIndicatorTargetIndex(i);
+          goToSlide(targetIndex);
+        });
+        indicatorsContainer.appendChild(indicator);
+      }
     }
-    
-    carouselTrack.style.transform = `translateX(${currentPosition}px)`;
-    
-    // Resume auto-scroll after 3 seconds of inactivity
-    setTimeout(() => {
-      if (!isAutoScrolling) {
-        carouselTrack.style.transform = '';
-        startAutoScroll();
-      }
-    }, 3000);
   };
   
-  // Event listeners for navigation
-  prevBtn.addEventListener('click', () => moveCarousel(1));
-  nextBtn.addEventListener('click', () => moveCarousel(-1));
+  // Get target index for indicator click in sliding window mode
+  const getIndicatorTargetIndex = (indicatorIndex: number) => {
+    if (showIndicators) return indicatorIndex;
+    
+    const windowStart = Math.max(0, Math.min(currentIndex - 2, totalCards - MAX_INDICATORS));
+    return windowStart + indicatorIndex;
+  };
   
-  // Start with auto-scroll
-  startAutoScroll();
+  // Update indicators based on current position
+  const updateIndicators = () => {
+    const indicators = indicatorsContainer.querySelectorAll('.indicator');
+    
+    if (showIndicators) {
+      // Simple case: highlight current indicator
+      indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentIndex);
+      });
+    } else {
+      // Sliding window: calculate which indicators to show
+      const windowStart = Math.max(0, Math.min(currentIndex - 2, totalCards - MAX_INDICATORS));
+      const windowEnd = windowStart + MAX_INDICATORS;
+      
+      indicators.forEach((indicator, index) => {
+        const targetIndex = windowStart + index;
+        indicator.classList.toggle('active', targetIndex === currentIndex);
+        
+        // Add visual hint for first/last when at edges
+        if (windowStart === 0 && index === 0) {
+          (indicator as HTMLElement).style.opacity = '1';
+        } else if (windowEnd === totalCards && index === MAX_INDICATORS - 1) {
+          (indicator as HTMLElement).style.opacity = '1';
+        } else {
+          (indicator as HTMLElement).style.opacity = targetIndex === currentIndex ? '1' : '0.7';
+        }
+      });
+    }
+  };
   
-  // Pause auto-scroll on hover
-  carouselTrack.addEventListener('mouseenter', stopAutoScroll);
+  // Update carousel position
+  const updateCarousel = () => {
+    const translateX = -currentIndex * cardWidth;
+    carouselTrack.style.transform = `translateX(${translateX}px)`;
+    
+    // Update indicators
+    updateIndicators();
+    
+    // Update counter
+    currentSlideSpan.textContent = (currentIndex + 1).toString();
+    
+    // Update button states
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= maxIndex;
+  };
+  
+  // Go to specific slide
+  const goToSlide = (index: number) => {
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
+    updateCarousel();
+  };
+  
+  // Navigation functions with multi-step movement
+  const goToPrev = () => {
+    if (currentIndex > 0) {
+      const step = getMovementStep();
+      const newIndex = Math.max(0, currentIndex - step);
+      goToSlide(newIndex);
+    }
+  };
+  
+  const goToNext = () => {
+    if (currentIndex < maxIndex) {
+      const step = getMovementStep();
+      const newIndex = Math.min(maxIndex, currentIndex + step);
+      goToSlide(newIndex);
+    }
+  };
+  
+  // Event listeners
+  prevBtn.addEventListener('click', goToPrev);
+  nextBtn.addEventListener('click', goToNext);
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goToPrev();
+    if (e.key === 'ArrowRight') goToNext();
+  });
+  
+  // Touch/swipe support
+  let startX = 0;
+  let isDragging = false;
+  
+  carouselTrack.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+  
+  carouselTrack.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+  });
+  
+  carouselTrack.addEventListener('touchend', (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    
+    const endX = e.changedTouches[0].clientX;
+    const diffX = startX - endX;
+    
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0) goToNext();
+      else goToPrev();
+    }
+  });
+  
+  // Mouse drag support
+  let mouseStartX = 0;
+  let isMouseDragging = false;
+  
+  carouselTrack.addEventListener('mousedown', (e) => {
+    mouseStartX = e.clientX;
+    isMouseDragging = true;
+    carouselTrack.style.cursor = 'grabbing';
+  });
+  
+  carouselTrack.addEventListener('mousemove', (e) => {
+    if (!isMouseDragging) return;
+    e.preventDefault();
+  });
+  
+  carouselTrack.addEventListener('mouseup', (e) => {
+    if (!isMouseDragging) return;
+    isMouseDragging = false;
+    carouselTrack.style.cursor = 'grab';
+    
+    const diffX = mouseStartX - e.clientX;
+    
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0) goToNext();
+      else goToPrev();
+    }
+  });
+  
   carouselTrack.addEventListener('mouseleave', () => {
-    setTimeout(() => {
-      if (!isAutoScrolling) {
-        carouselTrack.style.transform = '';
-        startAutoScroll();
+    isMouseDragging = false;
+    carouselTrack.style.cursor = 'grab';
+  });
+  
+  // Auto-play functionality with faster movement
+  let autoPlayInterval: NodeJS.Timeout;
+  
+  const startAutoPlay = () => {
+    autoPlayInterval = setInterval(() => {
+      if (currentIndex >= maxIndex) {
+        goToSlide(0);
+      } else {
+        goToNext();
       }
-    }, 1000);
+    }, 3500); // Reduced time for faster auto-play
+  };
+  
+  const stopAutoPlay = () => {
+    clearInterval(autoPlayInterval);
+  };
+  
+  // Initialize everything
+  initializeIndicators();
+  totalSlidesSpan.textContent = totalCards.toString();
+  
+  // Start auto-play
+  startAutoPlay();
+  
+  // Pause auto-play on hover
+  carouselTrack.addEventListener('mouseenter', stopAutoPlay);
+  carouselTrack.addEventListener('mouseleave', startAutoPlay);
+  
+  // Initialize carousel
+  updateCarousel();
+  
+  // Responsive updates
+  window.addEventListener('resize', () => {
+    const newVisibleCards = Math.floor(window.innerWidth / cardWidth);
+    const newMaxIndex = Math.max(0, totalCards - newVisibleCards);
+    
+    if (currentIndex > newMaxIndex) {
+      goToSlide(newMaxIndex);
+    } else {
+      updateCarousel();
+    }
   });
 
   // Modal functionality
@@ -225,11 +639,13 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       modal.style.display = 'flex';
+      stopAutoPlay();
     });
   });
 
   const closeModal = () => {
     modal.style.display = 'none';
+    startAutoPlay();
   };
 
   modalCloseBtn.addEventListener('click', closeModal);
