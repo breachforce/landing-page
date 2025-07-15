@@ -12,6 +12,16 @@
     ]
   },
   {
+    "caption": "February 2025 - eBPF Workshop",
+    "postUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7297888086921764864",
+    "thumbnailUrl": "https://res.cloudinary.com/dzw3rx183/image/upload/v1752435561/photo_6185827159621356878_y_lgmrgv.jpg",
+    "imageUrls": [
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752435561/photo_6185827159621356613_y_iajccr.jpg",
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752435561/photo_6185827159621356612_y_b6qccf.jpg",
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752435561/photo_6185827159621356878_y_lgmrgv.jpg"
+    ]
+  },
+  {
     "caption": "May 2025 - Silent Cloud Raids, Reverse Execution & Azure Attacks",
     "postUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7322284459829915648",
     "thumbnailUrl": "https://res.cloudinary.com/dzw3rx183/image/upload/v1751803751/2c089ad2-adf8-4a2c-a522-a7f29c37c33e_s5henk.jpg",
@@ -42,6 +52,56 @@
       "https://res.cloudinary.com/dzw3rx183/image/upload/v1751804218/c0c2df04-2ee7-40d8-9477-1d2fbc3d05e0_lqxosk.jpg",
       "https://res.cloudinary.com/dzw3rx183/image/upload/v1751804219/e66ebc66-290b-4a78-9b76-77bd5decd4dc_hkpon6.jpg",
       "https://res.cloudinary.com/dzw3rx183/image/upload/v1751804219/c5bda6e4-2a88-4f80-aa30-1e9c597d6a96_moroot.jpg"
+    ]
+  },
+  {
+    "caption": "August 2024 - Collab in SAKEC",
+    "postUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7228775257375948800",
+    "thumbnailUrl": "https://res.cloudinary.com/dzw3rx183/image/upload/v1752435918/1723455073114_kuzlzu.jpg",
+    "imageUrls": [
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752435918/1723455073114_kuzlzu.jpg"
+    ]
+  },
+  {
+    "caption": "May 2024 - Cool Recon Techniques and Understanding SOC",
+    "postUrl": "https://www.linkedin.com/posts/breachforce_breachforce-letsupgrade-itm-ugcPost-7208191545022328832-wnrB?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC0NTygBAovx9rt_dBO5Cm2CxHv1HSo60Vc",
+    "thumbnailUrl": "https://res.cloudinary.com/dzw3rx183/image/upload/v1752436201/1723455073114_jeg4d9.jpg",
+    "imageUrls": [
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752436202/1718566784768_fdaram.jpg",
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752436201/1723455073114_jeg4d9.jpg"
+    ]
+  },
+  {
+    "caption": "April 2024 - IoT Security and Request Smuggling",
+    "postUrl": "https://www.linkedin.com/posts/breachforce_breachforce-idfy-requestsmuggling-ugcPost-7198341713231278082-LXc1?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC0NTygBAovx9rt_dBO5Cm2CxHv1HSo60Vc",
+    "thumbnailUrl": "https://res.cloudinary.com/dzw3rx183/image/upload/v1752436847/1716218241623_a7sqar.jpg",
+    "imageUrls": [
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752436845/1716225111084_x9vrk9.jpg",
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752436847/1716218241623_a7sqar.jpg",
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752436848/1716226563643_cbkbzk.jpg",
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752436846/1716225111638_f1sgq0.jpg"
+    ]
+  },
+  {
+    "caption": "March 2024 - CI/CD Pipelines Workshop and Exploring SSL Certs",
+    "postUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7188077572935602176/",
+    "thumbnailUrl": "https://res.cloudinary.com/dzw3rx183/image/upload/v1752437077/1713771236609_hvslvk.jpg",
+    "imageUrls": [
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752437078/1713771239603_ujnnbb.jpg",
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752437077/1713771236609_hvslvk.jpg",
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752437080/1713771132582_w7grix.jpg",
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752437079/1713771233453_iujbib.jpg"
+    ]
+  },
+  {
+    "caption": "February 2024 - BChecks and Cache Poisoning and Deception",
+    "postUrl": "https://www.linkedin.com/posts/breachforce_breachforce-cybersecurity-mumbaimeetup-activity-7169730221137506304-C0O7?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC0NTygBAovx9rt_dBO5Cm2CxHv1HSo60Vc",
+    "thumbnailUrl": "https://res.cloudinary.com/dzw3rx183/image/upload/v1752437243/1709396886164_qimcoz.jpg",
+    "imageUrls": [
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752437245/1709396889640_ka1dn1.jpg",
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752437243/1709396886164_qimcoz.jpg",
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752437241/1709396885442_rgovhp.jpg",
+      "https://res.cloudinary.com/dzw3rx183/image/upload/v1752437242/1709396885802_etqrvf.jpg"
     ]
   }
 ]
