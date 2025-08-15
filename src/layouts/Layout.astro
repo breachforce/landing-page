@@ -27,32 +27,32 @@ const { title } = Astro.props;
     
     <script>
       // Scroll animation script
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
+      // const observerOptions = {
+      //   threshold: 0.1,
+      //   rootMargin: '0px 0px -50px 0px'
+      // };
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-            // Unobserve after animation to prevent re-triggering
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
+      // const observer = new IntersectionObserver((entries) => {
+      //   entries.forEach(entry => {
+      //     if (entry.isIntersecting) {
+      //       entry.target.classList.add('animate-in');
+      //       // Unobserve after animation to prevent re-triggering
+      //       observer.unobserve(entry.target);
+      //     }
+      //   });
+      // }, observerOptions);
 
-      // Observe all sections when DOM is loaded
-      document.addEventListener('DOMContentLoaded', () => {
-        // Add a small delay to ensure layout is settled
-        setTimeout(() => {
-          const sections = document.querySelectorAll('.section');
-          sections.forEach(section => {
-            section.classList.add('fade-in-section');
-            observer.observe(section);
-          });
-        }, 100);
-      });
+      // // Observe all sections when DOM is loaded
+      // document.addEventListener('DOMContentLoaded', () => {
+      //   // Add a small delay to ensure layout is settled
+      //   setTimeout(() => {
+      //     const sections = document.querySelectorAll('.section');
+      //     sections.forEach(section => {
+      //       section.classList.add('fade-in-section');
+      //       observer.observe(section);
+      //     });
+      //   }, 100);
+      // });
     </script>
   </body>
 </html>
@@ -142,9 +142,8 @@ const { title } = Astro.props;
 
   /* Scroll Animation Styles */
   .fade-in-section {
-    opacity: 0;
-    transform: translateY(15px); /* Reduced from 30px */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Shorter duration */
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .fade-in-section.animate-in {
