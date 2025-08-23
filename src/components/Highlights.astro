@@ -19,11 +19,47 @@ interface Highlight {
     <p class="section-subtitle">Showcasing real-world cybersecurity insights from our community.</p>
   </div>
   
-  <div class="carousel-wrapper">
-    <button class="carousel-nav carousel-prev" id="carousel-prev">‹</button>
-    <button class="carousel-nav carousel-next" id="carousel-next">›</button>
-    <div class="carousel-container">
-      <div class="carousel-track" id="carousel-track">
+    <div class="carousel-wrapper">
+      <button
+        class="carousel-nav carousel-prev"
+        id="carousel-prev"
+        aria-label="Previous slide"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5"
+          />
+        </svg>
+      </button>
+      <button
+        class="carousel-nav carousel-next"
+        id="carousel-next"
+        aria-label="Next slide"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+          />
+        </svg>
+      </button>
+      <div class="carousel-container">
+        <div class="carousel-track" id="carousel-track">
         {highlights.map((highlight: Highlight, index) => (
           <div 
             class="highlight-card" 
@@ -36,7 +72,7 @@ interface Highlight {
                 src={highlight.thumbnailUrl} 
                 alt={highlight.caption} 
                 width={400}
-                height={250}
+                height={225}
                 loading="lazy"
                 format="webp"
               />
@@ -118,25 +154,27 @@ interface Highlight {
   will-change: transform;
 }
 
-.highlight-card { 
-  flex: 0 0 auto; 
-  width: 400px; 
-  cursor: pointer; 
+.highlight-card {
+  flex: 0 0 auto;
+  width: 400px;
+  cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 8px;
   overflow: hidden;
-  background: #1a1a1a;
+  background: linear-gradient(145deg, #1f1a24, #15131a);
+  border: 1px solid rgba(134, 74, 249, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-.highlight-card:hover { 
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(134, 74, 249, 0.2);
+.highlight-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(134, 74, 249, 0.4);
 }
 
-.highlight-image { 
-  width: 100%; 
-  height: 250px; 
-  overflow: hidden; 
+.highlight-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
   background: #201e25;
   position: relative;
 }
@@ -169,28 +207,30 @@ interface Highlight {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(134, 74, 249, 0.9);
-  color: white;
-  border: none;
-  width: 60px;
-  height: 60px;
+  background: linear-gradient(135deg, rgba(134, 74, 249, 0.95), rgba(81, 40, 136, 0.95));
+  color: #fbf3fa;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  font-size: 1.8rem;
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(134, 74, 249, 0.3);
+  backdrop-filter: blur(6px);
+}
+
+.carousel-nav svg {
+  width: 24px;
+  height: 24px;
 }
 
 .carousel-nav:hover {
-  background-color: rgba(134, 74, 249, 1);
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 20px rgba(134, 74, 249, 0.4);
+  box-shadow: 0 6px 24px rgba(134, 74, 249, 0.5);
 }
 
 .carousel-nav:active {
@@ -224,7 +264,7 @@ interface Highlight {
   height: 12px;
   border-radius: 50%;
   border: 2px solid #864af9;
-  background: transparent;
+  background: rgba(134, 74, 249, 0.2);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -322,49 +362,47 @@ interface Highlight {
 }
 
 /* --- Responsive styles --- */
-@media (max-width: 768px) {
-  .highlight-card { 
-    width: 300px; 
-  }
-  
-  .modal-content { 
-    width: 90vw; 
-  }
-  
-  .carousel-nav {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-  }
-  
-  .carousel-prev { 
-    left: -10px; 
-  }
-  
-  .carousel-next { 
-    right: -10px; 
-  }
-}
+  @media (max-width: 768px) {
+    .highlight-card {
+      width: 300px;
+    }
 
-@media (max-width: 480px) {
-  .highlight-card { 
-    width: 280px; 
+    .modal-content {
+      width: 90vw;
+    }
+
+    .carousel-nav {
+      width: 48px;
+      height: 48px;
+    }
+
+    .carousel-prev {
+      left: -10px;
+    }
+
+    .carousel-next {
+      right: -10px;
+    }
   }
-  
-  .carousel-nav {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
+
+  @media (max-width: 480px) {
+    .highlight-card {
+      width: 280px;
+    }
+
+    .carousel-nav {
+      width: 40px;
+      height: 40px;
+    }
+
+    .carousel-prev {
+      left: 0;
+    }
+
+    .carousel-next {
+      right: 0;
+    }
   }
-  
-  .carousel-prev { 
-    left: 0; 
-  }
-  
-  .carousel-next { 
-    right: 0; 
-  }
-}
 </style>
 
 <script>
