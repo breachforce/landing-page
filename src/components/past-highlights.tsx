@@ -93,13 +93,13 @@ export default function PastHighlights() {
   }, [selectedHighlight]);
 
   return (
-    <section className="relative py-24 overflow-hidden" style={{ backgroundColor: "#101012" }}>
+    <section className="relative py-24 overflow-hidden" style={{ backgroundColor: "#0f0f10" }}>
       <div className="absolute inset-0 opacity-5">
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 25% 25%, #3b82f6 0%, transparent 50%), radial-gradient(circle at 75% 75%, #8b5cf6 0%, transparent 50%)",
+              "radial-gradient(circle at 25% 25%, #3b82f6 0%, transparent 25%), radial-gradient(circle at 75% 75%, #8b5cf6 0%, transparent 50%)",
           }}
         />
       </div>
@@ -112,10 +112,10 @@ export default function PastHighlights() {
             Community Events & Workshops
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-6 tracking-tight leading-tight">
+          <h2 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-6 tracking-tight leading-tight pb-2" style={{ fontFamily: "'Fira Mono', monospace" }}>
             Past Highlights
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light" style={{ fontFamily: "'Fira Sans', sans-serif" }}>
             Dive into our cybersecurity journey through immersive workshops, expert-led sessions, and hands-on learning
             experiences
           </p>
@@ -126,11 +126,12 @@ export default function PastHighlights() {
             <button
               onClick={() => setIsAutoPlaying(!isAutoPlaying)}
               className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gray-800/90 to-gray-700/90 hover:from-gray-700/90 hover:to-gray-600/90 border border-gray-600/50 hover:border-blue-500/50 rounded-2xl text-white hover:text-blue-100 transition-all duration-300 backdrop-blur-sm shadow-lg hover:shadow-blue-500/10 hover:scale-105"
+              style={{ fontFamily: "'Fira Sans', sans-serif" }}
             >
               {isAutoPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
               <span className="font-medium">{isAutoPlaying ? "Pause Slideshow" : "Play Slideshow"}</span>
             </button>
-            <div className="flex items-center gap-2 text-gray-300">
+            <div className="flex items-center gap-2 text-gray-300" style={{ fontFamily: "'Fira Sans', sans-serif" }}>
               <Users className="w-4 h-4" />
               <span className="font-medium">
                 Showing {currentIndex + 1}-{Math.min(currentIndex + currentItemsPerView, highlights.length)} of{" "}
@@ -199,11 +200,11 @@ export default function PastHighlights() {
                   </div>
 
                   <div className="p-5 flex-1 flex flex-col justify-between">
-                    <h3 className="text-white font-bold text-base leading-snug mb-3 group-hover:text-blue-200 transition-colors duration-300 line-clamp-2">
+                    <h3 className="text-white font-bold text-base leading-snug mb-3 group-hover:text-blue-200 transition-colors duration-300 line-clamp-2" style={{ fontFamily: "'Fira Sans', sans-serif" }}>
                       {highlight.caption}
                     </h3>
                     <div className="flex items-center justify-between mt-auto">
-                      <span className="text-gray-400 text-sm">Click to explore</span>
+                      <span className="text-gray-400 text-sm" style={{ fontFamily: "'Fira Sans', sans-serif" }}>Click to explore</span>
                       <div className="p-1.5 bg-gray-800/60 group-hover:bg-blue-600/30 rounded-lg transition-all duration-300">
                         <ExternalLink className="w-3.5 h-3.5 text-gray-300 group-hover:text-white transition-colors duration-300" />
                       </div>
@@ -272,9 +273,9 @@ export default function PastHighlights() {
           <div className="relative w-full max-w-5xl max-h-[90vh] bg-gray-900/95 rounded-xl overflow-hidden border border-gray-700/50 backdrop-blur-xl shadow-2xl">
             <div className="flex items-center justify-between p-4 border-b border-gray-700/50 bg-gray-800/50">
               <div className="flex-1">
-                <h3 className="text-lg font-bold text-white mb-1">{selectedHighlight.caption}</h3>
+                <h3 className="text-lg font-bold text-white mb-1" style={{ fontFamily: "'Fira Mono', monospace" }}>{selectedHighlight.caption}</h3>
                 <div className="flex items-center gap-4 text-gray-300">
-                  <span className="text-sm">
+                  <span className="text-sm" style={{ fontFamily: "'Fira Sans', sans-serif" }}>
                     {selectedImageIndex + 1} of {selectedHighlight.imageUrls.length}
                   </span>
                   <a
@@ -282,6 +283,7 @@ export default function PastHighlights() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-3 py-1.5 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 rounded-lg text-blue-200 hover:text-white transition-all duration-300 text-sm"
+                    style={{ fontFamily: "'Fira Sans', sans-serif" }}
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                     LinkedIn Post
