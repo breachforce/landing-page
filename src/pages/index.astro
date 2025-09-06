@@ -2,9 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Stats from '../components/Stats.astro';
-import Highlights from '../components/Highlights.astro';
+import PastHighlights from "../components/past-highlights.tsx";
 import WhatWeDo from '../components/WhatWeDo.astro';
 import Contribute from '../components/Contribute.astro';
+import PartnersSection from '../components/partner-section.tsx';
 import Social from '../components/Social.astro';
 import Resources from '../components/Resources.astro';
 import Contact from '../components/Contact.astro';
@@ -13,20 +14,57 @@ import Services from '../components/Services.astro';
 
 <Layout title="BreachForce - Mumbai's Underground Cybersecurity Meetups">
   <main>
-    <Hero />
-    <Stats />
-    <Highlights />
-    <WhatWeDo />
-    <Contribute />
-    <Social />
-    <Resources />
-    <Contact />
-	<Services />
+    {/* Hero with two CTAs: one anchors to #events, one to #services */}
+    <section id="hero">
+      <Hero />
+    </section>
+
+    {/* Community proof can come early */}
+    <section id="events">
+      <PastHighlights client:visible />
+    </section>
+    
+    <section id="stats">
+      <Stats />
+    </section>
+
+    {/* Trust before sell */}
+    <section id="partners">
+      <PartnersSection client:visible />
+    </section>
+
+    {/* What we do for community */}
+    <section id="what-we-do">
+      <WhatWeDo />
+    </section>
+
+    {/* Move services UP so buyers don’t miss it */}
+    <section id="services">
+      <Services />
+    </section>
+
+    {/* Content for depth/SEO */}
+    <section id="resources">
+      <Resources />
+    </section>
+
+    {/* Community CTA after they’ve seen enough value */}
+    <section id="contribute">
+      <Contribute />
+    </section>
+
+    {/* Contact near the bottom for both audiences */}
+    <section id="contact">
+      <Contact />
+    </section>
+
+    {/* Keep social low to avoid distracting from conversion */}
+    <section id="social">
+      <Social />
+    </section>
   </main>
 </Layout>
 
 <style>
-  main {
-    overflow-x: hidden;
-  }
+  main { overflow-x: hidden; }
 </style>
