@@ -41,6 +41,11 @@ export default function PastHighlights() {
 
   const maxIndex = Math.max(0, highlights.length - currentItemsPerView);
 
+  // Clamp index when maxIndex changes (e.g., resize) to avoid overshoot/blank space
+  useEffect(() => {
+    setCurrentIndex((prev) => Math.min(prev, maxIndex));
+  }, [maxIndex]);
+
   useEffect(() => {
     if (isAutoPlaying && !isHovered && !selectedHighlight) {
       intervalRef.current = setInterval(() => {
@@ -160,12 +165,12 @@ export default function PastHighlights() {
           <div
             className="flex transition-transform duration-700 ease-in-out"
             style={{
-              transform: `translateX(-${currentIndex * (100 / currentItemsPerView)}%)`,
+              transform: `translateX(-${currentIndex * (100 / highlights.length)}%)`,
               width: `${(highlights.length / currentItemsPerView) * 100}%`,
             }}
           >
             {highlights.map((highlight, index) => (
-              <div key={index} className="flex-shrink-0 px-3" style={{ width: `${100 / highlights.length}%` }}>
+              <div key={index} className="flex-shrink-0 box-border px-3" style={{ width: `${100 / highlights.length}%` }}>
                 <div
                   onClick={() => openModal(highlight)}
                   className="group relative bg-gradient-to-br from-gray-900/90 to-black/80 backdrop-blur-xl border border-gray-700/40 hover:border-blue-500/60 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-500/20 h-[340px] flex flex-col"
